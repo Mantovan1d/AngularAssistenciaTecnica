@@ -7,40 +7,107 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import { Mail, Phone, MapPin } from "lucide-react";
 
-export const ContactForm = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setIsLoading(true);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsLoading(true);
+  const formData = new FormData(e.currentTarget);
+
+  try {
+    const response = await fetch("https://formsubmit.co/francesmantovani@gmail.com", {
+      method: "POST",
+      body: formData
+    });
+
+    if (!response.ok) throw new Error("Erro no envio");
+
+    toast({
+      title: "Mensagem enviada com sucesso!",
+      description: "Entraremos em contato em breve.",
+    });
+
+    e.currentTarget.reset();
+  } catch (error) {
+    toast({
+      title: "Erro ao enviar mensagem.",
+      description: "Tente novamente ou use o WhatsApp.",
+      variant: "destructive"
+    });
+  } finally {
+    setIsLoading(false);
+  }
+};
+
+};
+
 
     const formData = new FormData(e.currentTarget);
+
     const data = {
+
       name: formData.get('name'),
+
       email: formData.get('email'),
+
       message: formData.get('message')
+
     };
 
+
     try {
+
       // Simulating API call - replace with actual endpoint
+
       await new Promise(resolve => setTimeout(resolve, 1000));
+
       
+
       toast({
+
         title: "Mensagem enviada com sucesso!",
+
         description: "Entraremos em contato em breve.",
+
       });
+
       
+
       (e.target as HTMLFormElement).reset();
+
     } catch (error) {
+
       toast({
+
         title: "Erro ao enviar mensagem",
+
         description: "Tente novamente ou entre em contato por telefone.",
+
         variant: "destructive"
+
       });
+
     } finally {
+
       setIsLoading(false);
+
     }
+
+  };
+
+
+  return (
+
+    <section id="contact" className="py-16 px-4 bg-background">
+
+      <div className="max-w-4xl mx-auto">
+
+        <div className="text-center mb-12">
+
+          <h2 className="text-3xl font-bold text-foreground mb-4 animate-slide-up">
+
+            Entre em Contato
+
+          </h2>
   };
 
   return (
