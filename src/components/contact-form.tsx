@@ -169,7 +169,3 @@ export const ContactForm = () => {
     </section>
   );
 };
-
-    </section>
-  );
-};
