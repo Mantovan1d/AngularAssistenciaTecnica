@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { WhatsAppFloat } from "./whatsapp-float";
 
 export const ContactForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -165,6 +166,7 @@ export const ContactForm = () => {
           </Card>
         </div>
       </div>
+      <WhatsAppFloat />
     </section>
   );
 };
