@@ -168,4 +168,7 @@ export const ContactForm = () => {
       </div>
     </section>
   );
+};Perfeito, Senhor. Como o código do formulário está em React/
+    </section>
+  );
 };
